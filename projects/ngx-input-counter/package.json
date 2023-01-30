@@ -1,0 +1,19 @@
+{
+  "name": "ngx-input-counter",
+  "version": "0.0.1",
+  "keywords": [
+    "frontend",
+    "input",
+    "component",
+    "input-number",
+    "counter"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

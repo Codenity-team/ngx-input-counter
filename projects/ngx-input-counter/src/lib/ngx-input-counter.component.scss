@@ -1,0 +1,18 @@
+.ngx-input-counter-container {
+  border: 1px solid #999;
+  width: fit-content;
+  text-align: center;
+  .ngx-input-counter-value {
+    width: 36px;
+    display: inline-block;
+  }
+}
+
+.ngx-input-counter-button {
+  background-color: none;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  line-height: 34px;
+  border: none;
+}
