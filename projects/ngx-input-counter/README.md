@@ -1,15 +1,35 @@
 # NgxInputCounter
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.0.
+The input number with counter for Angular
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name --project ngx-input-counter` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-input-counter`.
-> Note: Don't forget to add `--project ngx-input-counter` or else it will be added to the default project in your `angular.json` file. 
+### Versions
 
-## Build
+| Angular  | ngx-input-counter |
+| -------- |:------:| 
+| >=15.0.0 | v0.0.x |
 
-Run `ng build ngx-input-counter` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Instalation
+
+```
+npm i ngx-input-counter
+```
+
+## Usage
+
+Import the module
+
+```typescript
+import { NgxInputCounterModule } from 'ngx-input-counter';
+@NgModule({
+  ...
+  imports: [
+    ...,
+    NgxInputCounterModule,
+  ],
+})
+```
 
 ## Publishing
 

@@ -39,11 +39,16 @@ export class NgxInputCounterComponent implements ControlValueAccessor {
 
   @Input() value: number = 0;
   @Input() step: number = 1;
-  @Input() min: number | undefined;
+  @Input() min: number = -Infinity;
   @Input() max: number = Infinity;
   @Input() disabled: boolean = false;
 
   addItem(step: number) {
-    this.onInput(this.value + step)
+    let newValue = this.value + step;
+    if(this.value < this.min) newValue = this.min
+    if(this.value > this.max) newValue = this.max
+    const minValue = newValue >= this.min
+    if(this.max >= newValue && minValue)
+      this.onInput(newValue)
   }
 }

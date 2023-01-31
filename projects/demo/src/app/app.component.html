@@ -1,5 +1,26 @@
 <h1>Demo</h1>
 
+<div>
+
 <ngx-input-counter [(ngModel)]="qty"></ngx-input-counter>
 
 Value: {{qty}}
+
+<h2>Custom style</h2>
+
+<ngx-input-counter class="custom" [(ngModel)]="custom" [max]="5" [min]="0"></ngx-input-counter>
+
+Value: {{custom}}
+
+<h2>Form</h2>
+
+<div [formGroup]="myForm">
+  <ngx-input-counter class="custom" formControlName="age" [max]="20" [min]="18"></ngx-input-counter>
+
+  <pre>form: {{myForm.value | json}}
+    errors: {{myForm.errors | json}}
+  </pre>
+  
+</div>
+
+</div>

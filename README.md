@@ -1,19 +1,19 @@
 # NgxInputCounter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+The input number with counter for Angular
 
 ## Getting Started
 
 ### Versions
 
-| Angular  | lib |
+| Angular  | ngx-input-counter |
 | -------- |:------:| 
 | >=15.0.0 | v0.0.x |
 
 ### Instalation
 
 ```
-npm i lib
+npm i ngx-input-counter
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ npm i lib
 Import the module
 
 ```typescript
-import { NgxInputCounterModule } from 'lib';
+import { NgxInputCounterModule } from 'ngx-input-counter';
 @NgModule({
   ...
   imports: [

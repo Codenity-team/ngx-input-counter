@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+ngx-input-counter.custom {
+  font-family: 'Segoe UI', Verdana, sans-serif;
+  .ngx-input-counter-container {
+    border-radius: 500px;
+    text-align: center;
+    .ngx-input-counter-value {
+      width: 30px;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+  
+  .ngx-input-counter-button {
+    border: 1px solid #999;
+    border-radius: 100%;
+    background-color: white;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    &:hover {
+      background-color: #ddd;
+      box-shadow: 1px 1px 2px 1px #ccc;
+    }
+  }
+}
