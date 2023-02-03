@@ -33,8 +33,9 @@ import { NgxInputCounterModule } from 'ngx-input-counter';
 
 Use in your components
 
+```html
 <ngx-input-counter [(ngModel)]="qty"></ngx-input-counter>
-
+```
 
 ## Development server
 
