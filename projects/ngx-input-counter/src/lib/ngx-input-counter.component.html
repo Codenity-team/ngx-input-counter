@@ -1,11 +1,17 @@
+<ng-template #minus>-</ng-template>
+<ng-template #plus>+</ng-template>
 <div class="ngx-input-counter-container">
   <button class="ngx-input-counter-button" (click)="addItem(-step)">
-    -
+    <ng-template
+      [ngTemplateOutlet]="minusTemplate || minusTemplateFromContent?.templateRef || minus"
+      [ngTemplateOutletContext]="context"
+    ></ng-template>
+    <ng-content select="[minus]"></ng-content>
   </button>
   <div class="ngx-input-counter-value">
     {{value}}
   </div>
   <button class="ngx-input-counter-button" (click)="addItem(step)">
-    +
+    <ng-template *ngTemplateOutlet="plusTemplate || plusTemplateFromContent?.templateRef || plus; context: context"></ng-template>
   </button>
 </div>

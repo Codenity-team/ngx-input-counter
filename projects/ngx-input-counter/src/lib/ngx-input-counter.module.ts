@@ -1,18 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgxInputCounterComponent } from './ngx-input-counter.component';
+import { MinusContentDirective, NgxInputCounterComponent, PlusContentDirective } from './ngx-input-counter.component';
 
 
 
 @NgModule({
   declarations: [
-    NgxInputCounterComponent
+    NgxInputCounterComponent,
+    PlusContentDirective,
+    MinusContentDirective,
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    NgxInputCounterComponent
+    NgxInputCounterComponent,
+    PlusContentDirective,
+    MinusContentDirective
   ]
 })
 export class NgxInputCounterModule { }

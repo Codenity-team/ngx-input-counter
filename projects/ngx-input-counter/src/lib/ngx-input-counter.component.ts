@@ -1,5 +1,23 @@
-import { Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ContentChild, Directive, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+export interface TemplateContext {
+	min: number;
+	step: number;
+}
+
+@Directive({
+  selector: '[plus]'
+})
+export class PlusContentDirective {
+  constructor(public templateRef: TemplateRef<TemplateContext>) {}
+}
+@Directive({
+  selector: '[minus]'
+})
+export class MinusContentDirective {
+  constructor(public templateRef: TemplateRef<TemplateContext>) {}
+}
 
 @Component({
   selector: 'ngx-input-counter',
@@ -13,7 +31,20 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class NgxInputCounterComponent implements ControlValueAccessor {
+export class NgxInputCounterComponent implements ControlValueAccessor, OnInit {
+  ngOnInit(): void {
+    this.context = {
+      min: this.min,
+      step: this.step,
+      value: this.value
+    }
+  }
+
+  @Input() minusTemplate!: TemplateRef<TemplateContext>;
+	@ContentChild(MinusContentDirective) minusTemplateFromContent: MinusContentDirective | undefined;
+
+  @Input() plusTemplate!: TemplateRef<TemplateContext>;
+	@ContentChild(PlusContentDirective) plusTemplateFromContent: PlusContentDirective | undefined;
 
   onChange = (_:any) => { }
   onTouch = () => { }
@@ -22,6 +53,7 @@ export class NgxInputCounterComponent implements ControlValueAccessor {
     this.value = value;
     this.onTouch();
     this.onChange(this.value);
+    this.change.emit(this.value);
   }
 
   writeValue(value: any): void {
@@ -42,6 +74,13 @@ export class NgxInputCounterComponent implements ControlValueAccessor {
   @Input() min: number = -Infinity;
   @Input() max: number = Infinity;
   @Input() disabled: boolean = false;
+  @Output() change = new EventEmitter;
+
+  context = {
+    min: this.min,
+    step: this.step,
+    value: this.value
+  }
 
   addItem(step: number) {
     let newValue = this.value + step;

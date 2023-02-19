@@ -29,3 +29,42 @@ ngx-input-counter.custom {
     }
   }
 }
+
+ngx-input-counter.custom-plus {
+  font-family: 'Segoe UI', Verdana, sans-serif;
+  .ngx-input-counter-container {
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    overflow: hidden;
+    .ngx-input-counter-value {
+      width: 30px;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+  
+  .ngx-input-counter-button {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    line-height: unset;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}

@@ -14,4 +14,8 @@ export class AppComponent {
   myForm: FormGroup = new FormGroup({
     age: new FormControl(2, [Validators.min(18)])
   })
+
+  onChange(e: any) {
+    console.log(e, 'onChange called');
+  }
 }

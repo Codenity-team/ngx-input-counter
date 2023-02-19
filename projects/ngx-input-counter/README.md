@@ -31,14 +31,25 @@ import { NgxInputCounterModule } from 'ngx-input-counter';
 })
 ```
 
-## Publishing
+Use in your components
 
-After building your library with `ng build ngx-input-counter`, go to the dist folder `cd dist/ngx-input-counter` and run `npm publish`.
+```html
+<ngx-input-counter [(ngModel)]="qty"></ngx-input-counter>
+```
 
-## Running unit tests
+### Props
 
-Run `ng test ngx-input-counter` to execute the unit tests via [Karma](https://karma-runner.github.io).
+| Name | Type | Default | Description |
+|-------------|--------------------|-------------|-------------|
+| value | `number` | `0` | Initial state of the toggle button |
+| min | `number` | `-Infinity` | Transition time for the animation |
+| max | `number` | `Infinity`  | Transition time for the animation |
+| step | `number` | `1` | Transition time for the animation |
+| minusTemplate | `TemplateRef` | `-` | Pass a TemplateRef to replace the minus button content |
+| plusTemplate | `TemplateRef` | `+` | Pass a TemplateRef to replace the plus button content |
 
-## Further help
+### Outputs
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| Name   | Payload | Description |
+| ---    | ------  | -------     |
+| change | value   | Triggered when state of the component changes. <br>Contains: <br>`value` - state of the component |
