@@ -1,6 +1,7 @@
 {
   "name": "ngx-input-counter",
-  "version": "0.0.2",
+  "description": "Input counter component for Angular",
+  "version": "0.0.3",
   "keywords": [
     "frontend",
     "input",
@@ -8,6 +9,15 @@
     "input-number",
     "counter"
   ],
+  "license": "MIT",
+  "homepage": "https://github.com/Codenity-team/ngx-input-counter#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Codenity-team/ngx-input-counter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Codenity-team/ngx-input-counter/issues"
+  },
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0"

@@ -1,21 +1,24 @@
-import { Component, ContentChild, Directive, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, Directive, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface TemplateContext {
 	min: number;
 	step: number;
+  class: string;
 }
 
 @Directive({
   selector: '[plus]'
 })
 export class PlusContentDirective {
+  @Input() class: string = '';
   constructor(public templateRef: TemplateRef<TemplateContext>) {}
 }
 @Directive({
   selector: '[minus]'
 })
 export class MinusContentDirective {
+  @Input() class: string = '';
   constructor(public templateRef: TemplateRef<TemplateContext>) {}
 }
 
@@ -31,7 +34,10 @@ export class MinusContentDirective {
     }
   ]
 })
-export class NgxInputCounterComponent implements ControlValueAccessor, OnInit {
+export class NgxInputCounterComponent implements ControlValueAccessor, OnInit, AfterContentInit {
+  ngAfterContentInit(): void {
+    console.log(this.minusTemplate)
+  }
   ngOnInit(): void {
     this.context = {
       min: this.min,
@@ -74,6 +80,11 @@ export class NgxInputCounterComponent implements ControlValueAccessor, OnInit {
   @Input() min: number = -Infinity;
   @Input() max: number = Infinity;
   @Input() disabled: boolean = false;
+
+  @Input() minusClass = 'ngx-input-counter-button';
+  @Input() plusClass = 'ngx-input-counter-button';
+  @Input() valueClass = 'ngx-input-counter-value';
+
   @Output() change = new EventEmitter;
 
   context = {

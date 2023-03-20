@@ -47,6 +47,10 @@ Use in your components
 | step | `number` | `1` | Transition time for the animation |
 | minusTemplate | `TemplateRef` | `-` | Pass a TemplateRef to replace the minus button content |
 | plusTemplate | `TemplateRef` | `+` | Pass a TemplateRef to replace the plus button content |
+| minusClass | `string` | `'ngx-input-counter-button'` | Classes of the minus button |
+| plusClass | `string` | `'ngx-input-counter-button'` | Classes of the plus button |
+| valueClass | `string` | `'ngx-input-counter-value'` | Classes of value text |
+| disabled | `boolean` | `false` | Disables the buttons
 
 ### Outputs
 

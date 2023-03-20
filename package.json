@@ -1,6 +1,7 @@
 {
   "name": "ngx-input-counter",
-  "version": "0.0.2",
+  "description": "Input counter component for Angular",
+  "version": "0.0.3",
   "keywords": [
     "frontend",
     "input",

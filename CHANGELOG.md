@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.3]
+
+### Added 
+
+- Improved README.md
+- Added `minusClass`, `plusClass` and `valueClass` inputs to use custom classes via props
+
 ## [0.0.2]
 
 ### Added 
