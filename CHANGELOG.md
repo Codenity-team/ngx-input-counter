@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0] - 2025-05-25
+
+### Added 
+
+- Improved README.md
+- Added `minusComponent`, `plusComponent` inputs to set custom component template content to minus and plus buttons.
+- Added `NgxInputCounterService` to set config.
+- Added Standalone
+- Upgraded to Angular 18
+
 ## [0.0.3]
 
 ### Added 
