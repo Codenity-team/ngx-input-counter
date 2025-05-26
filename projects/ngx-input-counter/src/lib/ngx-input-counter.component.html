@@ -1,11 +1,33 @@
 <ng-template #minus>-</ng-template>
 <ng-template #plus>+</ng-template>
+<ng-template #plusTemplateComponent>
+  @if (plusComponent) {
+    <ng-container [ngComponentOutlet]="plusComponent" [ngComponentOutletInputs]="{
+      value: this.value,
+      min: this.min,
+      step: this.step,
+    }" />
+  }
+</ng-template>
+<ng-template #minusTemplateComponent>
+  @if (minusComponent) {
+    <ng-container [ngComponentOutlet]="minusComponent" [ngComponentOutletInputs]="{
+      value: this.value,
+      min: this.min,
+      step: this.step,
+    }" />
+  }
+</ng-template>
 <div class="ngx-input-counter-container">
   <ng-template let-class="class" #tm>
     <button [class]="minusTemplateFromContent?.class || minusClass" (click)="addItem(-step)" [disabled]="disabled">
       <ng-template
-        [ngTemplateOutlet]="minusTemplate || minusTemplateFromContent?.templateRef || minus"
-        [ngTemplateOutletContext]="context"
+        [ngTemplateOutlet]="minusTemplate || minusTemplateFromContent?.templateRef || minusTemplateComponent || minus"
+        [ngTemplateOutletContext]="{
+          value: this.value,
+          min: this.min,
+          step: this.step,
+        }"
       ></ng-template>
     </button>
   </ng-template>
@@ -18,6 +40,6 @@
     {{value}}
   </div>
   <button [class]="plusTemplateFromContent?.class || plusClass" (click)="addItem(step)" [disabled]="disabled">
-    <ng-template *ngTemplateOutlet="plusTemplate || plusTemplateFromContent?.templateRef || plus; context: context"></ng-template>
+    <ng-template *ngTemplateOutlet="plusTemplate || plusTemplateFromContent?.templateRef || plusTemplateComponent || plus; context: context"></ng-template>
   </button>
 </div>

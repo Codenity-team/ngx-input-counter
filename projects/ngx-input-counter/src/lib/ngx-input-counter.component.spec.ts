@@ -8,7 +8,7 @@ describe('NgxInputCounterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgxInputCounterComponent ]
+      imports: [NgxInputCounterComponent]
     })
     .compileComponents();
 
@@ -20,7 +20,6 @@ describe('NgxInputCounterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
   it('should have default values', () => {
     expect(component.value).toEqual(0);
     expect(component.step).toBe(1);

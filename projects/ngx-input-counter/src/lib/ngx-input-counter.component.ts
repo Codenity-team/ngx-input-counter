@@ -1,29 +1,37 @@
-import { AfterContentInit, Component, ContentChild, Directive, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AfterContentInit, Component, ComponentRef, ContentChild, Directive, EventEmitter, forwardRef, inject, Input, OnInit, Output, TemplateRef, Type } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgxInputCounterService } from './ngx-input-counter.service';
 
 export interface TemplateContext {
 	min: number;
 	step: number;
-  class: string;
+  value: number;
 }
 
 @Directive({
-  selector: '[plus]'
+  selector: '[plus]',
+  standalone: true,
 })
 export class PlusContentDirective {
   @Input() class: string = '';
   constructor(public templateRef: TemplateRef<TemplateContext>) {}
 }
 @Directive({
-  selector: '[minus]'
+  selector: '[minus]',
+  standalone: true,
 })
 export class MinusContentDirective {
   @Input() class: string = '';
   constructor(public templateRef: TemplateRef<TemplateContext>) {}
 }
 
+let nextUniqueId = 0;
+
 @Component({
   selector: 'ngx-input-counter',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './ngx-input-counter.component.html',
   styleUrls: ['./ngx-input-counter.component.scss'],
   providers: [
@@ -35,6 +43,12 @@ export class MinusContentDirective {
   ]
 })
 export class NgxInputCounterComponent implements ControlValueAccessor, OnInit, AfterContentInit {
+  config = inject(NgxInputCounterService);
+  @Input() id: string = ''
+  @Input() name: string = this.config.name || '';
+  @Input('aria-label') ariaLabel: string | null = null;
+  @Input('aria-labelledby') ariaLabelledby: string | null = null;
+  @Input('aria-describedby') ariaDescribedby: string | null = null;
   ngAfterContentInit(): void {
     console.log(this.minusTemplate)
   }
@@ -45,12 +59,22 @@ export class NgxInputCounterComponent implements ControlValueAccessor, OnInit, A
       value: this.value
     }
   }
+  constructor(
+  ) {
+    console.log(this.config)
+    this._uniqueId = 'ngx-counter-'+(++nextUniqueId);
+    this.id = this.id || this._uniqueId
+    this.ariaLabel = this.ariaLabel || this.name || this.id
+  }
 
-  @Input() minusTemplate!: TemplateRef<TemplateContext>;
+  @Input() minusTemplate: TemplateRef<TemplateContext> = this.config.minusTemplate!;
 	@ContentChild(MinusContentDirective) minusTemplateFromContent: MinusContentDirective | undefined;
 
-  @Input() plusTemplate!: TemplateRef<TemplateContext>;
+  @Input() plusTemplate: TemplateRef<TemplateContext> = this.config.plusTemplate!;
 	@ContentChild(PlusContentDirective) plusTemplateFromContent: PlusContentDirective | undefined;
+
+  @Input() plusComponent: Type<any> = this.config.plusComponent!;
+  @Input() minusComponent: Type<any> = this.config.minusComponent!;
 
   onChange = (_:any) => { }
   onTouch = () => { }
@@ -75,17 +99,19 @@ export class NgxInputCounterComponent implements ControlValueAccessor, OnInit, A
     this.disabled = isDisabled;
   }
 
-  @Input() value: number = 0;
-  @Input() step: number = 1;
-  @Input() min: number = -Infinity;
-  @Input() max: number = Infinity;
-  @Input() disabled: boolean = false;
+  @Input() value: number = this.config.value || 0;
+  @Input() step: number =this.config.step ||  1;
+  @Input() min: number = this.config.min || -Infinity;
+  @Input() max: number = this.config.max || Infinity;
+  @Input() disabled: boolean = this.config.disabled || false;
 
-  @Input() minusClass = 'ngx-input-counter-button';
-  @Input() plusClass = 'ngx-input-counter-button';
-  @Input() valueClass = 'ngx-input-counter-value';
+  @Input() minusClass = this.config.minusClass || 'ngx-input-counter-button';
+  @Input() plusClass = this.config.plusClass || 'ngx-input-counter-button';
+  @Input() valueClass = this.config.valueClass || 'ngx-input-counter-value';
 
   @Output() change = new EventEmitter;
+
+  private _uniqueId: string;
 
   context = {
     min: this.min,
