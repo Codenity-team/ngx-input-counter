@@ -40,7 +40,6 @@ export class PlusTemplateComponent {
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   imports: [NgxInputCounterComponent, JsonPipe, ReactiveFormsModule, FormsModule, CommonModule, PlusContentDirective, AppCounterComponent]

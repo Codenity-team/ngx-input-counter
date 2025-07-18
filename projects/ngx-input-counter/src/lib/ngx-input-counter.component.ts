@@ -30,7 +30,6 @@ let nextUniqueId = 0;
 
 @Component({
   selector: 'ngx-input-counter',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './ngx-input-counter.component.html',
   styleUrls: ['./ngx-input-counter.component.scss'],
