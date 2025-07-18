@@ -17,6 +17,7 @@ The input number with counter for Angular
 
 | Angular  | ngx-input-counter |
 | -------- |:------:| 
+| >=18.0.0 | v1.1.x |
 | >=16.0.0 | v1.0.x |
 | >=15.0.0 | v0.0.x |
 

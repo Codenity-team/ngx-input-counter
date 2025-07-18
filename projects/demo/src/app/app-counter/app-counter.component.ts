@@ -4,7 +4,6 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-counter',
-  standalone: true,
   imports: [NgxInputCounterComponent],
   styles: [
     `:host {
